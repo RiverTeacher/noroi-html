@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>呪いの画面</title>
+</head>
+<body>
+  <script>
+    // 1秒ごとに呪いの文字列を生成して画面に追加する関数
+    function addCurse() {
+      // 呪いの文字列
+      var curse = "呪";
+      // 画面幅
+      var screenWidth = window.innerWidth;
+      // 画面高さ
+      var screenHeight = window.innerHeight;
+      // 画面内に生成する呪いの文字列の数
+      var numCurses = screenWidth * screenHeight / 100; // 1万個に1個の密度で表示する
+
+      // 呪いの文字列を画面に追加する
+      for (var i = 0; i < numCurses; i++) {
+        // 呪いの文字列を生成
+        var newCurse = document.createElement("div");
+        newCurse.innerHTML = curse;
+        newCurse.style.position = "absolute";
+        newCurse.style.top = Math.random() * screenHeight + "px";
+        newCurse.style.left = Math.random() * screenWidth + "px";
+        newCurse.style.color = "#" + ((1 << 24) * Math.random() | 0).toString(16); // 色をランダムに変更する
+        // 画面に追加
+        document.body.appendChild(newCurse);
+      }
+    }
+
+    // 1秒ごとに呪いの文字列を追加する
+    setInterval(addCurse, 10);
+  </script>
+</body>
+</html>
